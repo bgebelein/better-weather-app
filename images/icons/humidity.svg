@@ -1,9 +1,37 @@
-<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke-linecap="round" stroke-width="2">
-        <path
-            d="m6.8 11.5c-1.65 2.87-.67 6.54 2.21 8.19 2.87 1.65 6.54.67 8.19-2.21 1.07-1.85 1.07-4.13 0-5.99l-5.2-7.99z"
-            stroke="#3cabf8" stroke-linejoin="round" />
-        <path d="m10 16 4-4" stroke="#fff" />
-        <path d="m10 12 4+4" stroke="#fff" stroke-dasharray="0 0 0 5.5" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    @keyframes animation {
+      0%{
+        stroke-dashoffset: 40;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .air path{
+        animation: animation;
+        animation-iteration-count: infinite;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+    }
+
+    .air path:first-child{
+      animation-delay: .5s;
+    }
+
+    .air path:last-child{
+      animation-delay: 1s;
+    }
+  </style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <g stroke="#fff" stroke-dasharray="0 0 20 20" class="air">
+      <path d="m3,7c2.67-2,6.33-2,9,0" />
+      <path d="m3,17c2.67-2,6.33-2,9,0s6.33,2,9,0" />
+      <path d="m3,12c2.67-2,6.33-2,9,0" />
     </g>
+    
+    <path d="m15.39,9.3l2.56-4.3,2.56,4.3c1.13,1.84-.31,4.27-2.56,4.2-2.25.07-3.69-2.36-2.56-4.2Z" stroke="#3cabf8" />
+  </g>
+  
 </svg>
