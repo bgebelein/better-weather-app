@@ -1,9 +1,29 @@
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes animation {
+            0%{
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(5deg);
+            }
+        }
+    
+        .needle {
+            transform-origin: center;
+            animation-name: animation;
+            animation-iteration-count: infinite;
+            animation-duration: .4s;
+            animation-timing-function: linear;
+            animation-direction: alternate-reverse;
+        }
+    </style>
+
     <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
         <g stroke="#fff">
             <circle cx="12" cy="12" r="9" />
             <circle cx="12" cy="12" r="1" />
-            <path d="m13.41 10.59 2.59-2.59" />
+            <path class="needle" d="m13.41 10.59 2.59-2.59" />
         </g>
         <path d="m7 12c0-2.76 2.24-5 5-5" stroke="#3cabf8" />
     </g>

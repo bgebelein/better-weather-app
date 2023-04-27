@@ -1,8 +1,36 @@
-<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="m3 17h1m16 0h1m-15.4-6.4.7.7m12.1-.7-.7.7m-9.7 5.7c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#fc0" />
-        <path d="m3 21h18" stroke="#fff" />
-        <path d="m12 9v-6l3 3m-6 0 3-3" stroke="#fff" />
-        <path d="m3 17h1m16 0h1m-15.4-6.4.7.7m12.1-.7-.7.7m-9.7 5.7c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#fc0" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    @keyframes animation {
+			0%{
+                transform: rotate(0deg);
+			}
+			100% {
+                transform: rotate(360deg);
+			}
+		}
+
+    .rays {
+      transform-origin: 12px 17px;
+			animation-name: animation;
+			animation-iteration-count: infinite;
+			animation-duration: 60s;
+			animation-timing-function: linear;
+		}
+  </style>
+
+  <defs>
+    <mask id="b">
+      <polygon points="0 2 0 16 24 16 24 4 12 15 0 4" fill="#fff" style="filter: blur(1px);" />
+    </mask>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <g mask="url(#b)">
+      <path class="rays" d="m3,17h1m8-9v1m8,8h1m-9,8v1m-6.4-15.4l.7.7m12.1-.7l-.7.7m0,11.4l.7.7m-12.1-.7l-.7.7" stroke="#fc0" />
     </g>
+    <path d="m8,17c0-2.21,1.79-4,4-4s4,1.79,4,4" stroke="#fc0"/>
+
+    <path d="m3,21h18" stroke="#fff" />
+    <path d="m12,9V3l3,3m-6,0l3-3" stroke="#fff" />
+  </g>
 </svg>
