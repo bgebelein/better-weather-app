@@ -281,6 +281,13 @@ function setWeatherData(weatherData) {
     const weatherLocation = weatherTemplateClone.content.querySelector('.weather-location');
     weatherLocation.innerText = weatherLocationName;
 
+    // Current Time
+    let currentDayValue = getDay(weatherData.current.dt, weatherData.timezone_offset);
+    let currentDateValue = getDate(weatherData.current.dt, weatherData.timezone_offset);
+    let currentTimeValue = getHoursAndMinutes(weatherData.current.dt, weatherData.timezone_offset);
+    const currentTimeContainer = weatherTemplateClone.content.querySelector('.current-time');
+    currentTimeContainer.innerText = `${currentDayValue}, ${currentDateValue} - ${currentTimeValue}`;
+
     // Current weather video
     const currentWeatherVideo = weatherTemplateClone.content.querySelector('.current-weather-video > video');
     currentWeatherVideo.setAttribute('src', 'vid/' + setWeatherMedia(weatherData.current.weather[0], 'mp4') + '.mp4');
@@ -294,12 +301,21 @@ function setWeatherData(weatherData) {
     currentTemperature.innerText = Math.round(weatherData.current.temp);
     currentTemperature.parentNode.setAttribute('onclick', 'triggerToast("Now", "' + weatherData.current.weather[0].description + ' | ' + Math.round(weatherData.current.temp) + '°")');
 
-    // Current Time
-    let currentDayValue = getDay(weatherData.current.dt, weatherData.timezone_offset);
-    let currentDateValue = getDate(weatherData.current.dt, weatherData.timezone_offset);
-    let currentTimeValue = getHoursAndMinutes(weatherData.current.dt, weatherData.timezone_offset);
-    const currentTimeContainer = weatherTemplateClone.content.querySelector('.current-time');
-    currentTimeContainer.innerText = `${currentDayValue}, ${currentDateValue} - ${currentTimeValue}`;
+    // Add weather alerts if avaiable
+    if (weatherData.alerts) {
+        // Weather alert template
+        const alertTemplate = document.querySelector('#alert-template');
+        let alertTemplateClone = alertTemplate.cloneNode(true);
+
+        // Set alert value
+        const alertValue = alertTemplateClone.content.querySelector('.alert-value');
+        alertValue.innerText = weatherData.alerts[0].event;
+
+        // alertValue.parentNode.setAttribute('onclick', 'triggerToast("Weather alert", "' + weatherData.alerts[0].event + '", "warning")');
+
+        // Add clone to DOM
+        weatherTemplateClone.content.querySelector('section.current-weather').insertBefore(alertTemplateClone.content.querySelector('.weather-alert'), weatherTemplateClone.content.querySelector('.current-weather-data'));
+    }
 
     // Sun / Moon container
     const sunMoonContainer = weatherTemplateClone.content.querySelector('.sun-moon');
@@ -460,20 +476,6 @@ function setWeatherData(weatherData) {
 
         // Add to template clone
         dailyWeatherList.appendChild(dailyWeatherItemClone, true);
-    }
-
-    // Add weather alerts if avaiable
-    if (weatherData.alerts) {
-        // Weather alert template
-        const alertTemplate = document.querySelector('#alert-template');
-        let alertTemplateClone = alertTemplate.cloneNode(true);
-
-        // Set alert value
-        const alertValue = alertTemplateClone.content.querySelector('.alert-value');
-        alertValue.innerText = weatherData.alerts[0].event;
-
-        // Add clone to DOM
-        weatherTemplateClone.content.querySelector('section.current-weather').insertBefore(alertTemplateClone.content.querySelector('.weather-alert'), weatherTemplateClone.content.querySelector('.current-weather-data'));
     }
 
     // Add clone to DOM
