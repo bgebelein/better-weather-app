@@ -327,7 +327,7 @@ function setWeatherData(weatherData) {
 
     // Moonrise
     const currentMoonrise = weatherTemplateClone.content.querySelector('.current-moonrise-value');
-    currentMoonrise.innerText = getHoursAndMinutes(weatherData.daily[0].moonset, weatherData.timezone_offset);
+    currentMoonrise.innerText = getHoursAndMinutes(weatherData.daily[0].moonrise, weatherData.timezone_offset);
 
     // Moonposition
     let currentMoonpositionValue = mapPercentageValue(weatherData.daily[0].moonrise, weatherData.daily[0].moonset, weatherData.current.dt);
@@ -341,7 +341,7 @@ function setWeatherData(weatherData) {
 
     // Moonset
     const currentMoonset = weatherTemplateClone.content.querySelector('.current-moonset-value');
-    currentMoonset.innerText = getHoursAndMinutes(weatherData.daily[0].moonrise, weatherData.timezone_offset);
+    currentMoonset.innerText = getHoursAndMinutes(weatherData.daily[0].moonset, weatherData.timezone_offset);
 
     // Show Moon Widget, when useful
     currentSunpositionValue === 0 && currentMoonpositionValue !== 0 ? sunMoonContainer.classList.add('flipped') : null;
