@@ -6,6 +6,7 @@ import {triggerPwaPopUp} from "./pwa.js";
 import {setMap} from "./map.js";
 import {triggerToast} from "./toast.js";
 window.triggerToast = triggerToast;
+import "../../node_modules/drag-drop-touch/DragDropTouch.js";
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
 

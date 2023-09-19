@@ -28,6 +28,7 @@
   "homepage": "https://github.com/bgebelein/better-weather-app#readme",
   "dependencies": {
     "cpy-cli": "^5.0.0",
+    "drag-drop-touch": "^1.3.1",
     "html-minifier": "^4.0.0",
     "leaflet": "^1.9.4",
     "uglify-js": "^3.17.4"
