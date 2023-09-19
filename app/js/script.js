@@ -182,7 +182,7 @@ function geolocationSuccess(position) {
                 // Get weatherdata when locations were added
                 setTimeout(function () {
                     locationArr.length > 0 ? getData(locationArr) : null;
-                }, 500);
+                }, 200);
             }
         })
 }
