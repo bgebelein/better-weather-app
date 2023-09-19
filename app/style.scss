@@ -171,7 +171,7 @@ footer {
             "wind-direction wind-speed pressure"
             "humidity pop uvi";
         grid-gap: .75rem;
-        perspective: 4000px;
+        perspective: 2000px;
 
         div:not(.sun-moon) {
             display: grid;
