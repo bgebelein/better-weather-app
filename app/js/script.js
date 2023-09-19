@@ -6,6 +6,7 @@ import {triggerPwaPopUp} from "./pwa.js";
 import {setMap} from "./map.js";
 import {triggerToast} from "./toast.js";
 window.triggerToast = triggerToast;
+import "./dialog.js";
 import "../../node_modules/drag-drop-touch/DragDropTouch.js";
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
@@ -14,7 +15,7 @@ export const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
 
 /* -------------------- Get data from local storage  -------------------- */
 
-let locationArr = [];
+export let locationArr = [];
 
 if (localStorage.getItem('myWeatherLocationArr')) {
     locationArr = JSON.parse(localStorage.getItem('myWeatherLocationArr'));
@@ -235,40 +236,6 @@ searchForm.addEventListener('submit', function (e) {
             }
         })
 });
-
-/* -------------------- Open / Close Dialog  -------------------- */
-
-const dialogButtons = document.querySelectorAll('button[data-dialog-target]');
-const dialogs = document.querySelectorAll('.dialog');
-
-dialogButtons.forEach(button => {
-    button.addEventListener('click', function openDialog(e) {
-        // toggle dialog
-        let dialogTarget = document.getElementById(e.currentTarget.getAttribute('data-dialog-target'));
-        dialogTarget.classList.add('open');
-
-        // prevent backgound scrolling
-        document.querySelector('body').style.overflow = 'hidden';
-    });
-});
-
-function closeDialog(e) {
-    // Close dialog + enable scrolling
-    dialogs.forEach(dialog => dialog.classList.remove('open'))
-    document.querySelector('body').style.overflow = 'auto';
-
-    // Save array and rerender weather app only when things changed
-    if (JSON.stringify(locationArr) !== localStorage.getItem('myWeatherLocationArr')) {
-        localStorage.setItem('myWeatherLocationArr', JSON.stringify(locationArr));
-        document.querySelector('main').innerHTML = '';
-        getGeoLocation();
-    }
-}
-
-let closeDialogButtons = document.querySelectorAll('button.close-dialog');
-closeDialogButtons.forEach(btn => btn.addEventListener('click', function() {
-    closeDialog(this);
-}));
 
 /* -------------------- Get Weather Data  -------------------- */
 
