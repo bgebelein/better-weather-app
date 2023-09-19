@@ -8,8 +8,6 @@ import {triggerToast} from "./toast.js";
 window.triggerToast = triggerToast;
 import "../../node_modules/drag-drop-touch/DragDropTouch.js";
 
-console.log("This is a test");
-
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
 
 export const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
