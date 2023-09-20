@@ -197,6 +197,7 @@ footer {
         grid-area: sun;
         transform-style: preserve-3d;
         transition: transform .3s ease-out;
+        backface-visibility: hidden;
 
         &.flipped{
             transform: rotateX(180deg);
