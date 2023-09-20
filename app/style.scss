@@ -31,7 +31,7 @@ main {
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    margin-top: -3.5rem;
+    margin-top: -5rem;
 
     &:empty::before  {
         content: "No weather data. Add locations or try again later.";
@@ -51,14 +51,13 @@ main {
     article{
         position: relative;
         width: 100%;
-        max-width: 640px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
 
         header{
             flex-direction: column;
             gap: .5rem;
-            justify-content: start;
+            justify-content: end;
 
             .current-time{
                 opacity: .8;
@@ -68,6 +67,8 @@ main {
         section {
             scroll-snap-align: center;
             scroll-snap-stop: always;
+            max-width: 640px;
+            margin: 0 auto;
     
             &:last-of-type {
                 margin-bottom: 0;
@@ -112,11 +113,11 @@ footer {
     padding: 0 .75rem;
 
     .current-weather-video{
+        width: min(1200px, 100%);
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        left: 50%;
         z-index: -1;
+        transform: translate(-50%, -20%);
 
         video{
             width: 100%;
