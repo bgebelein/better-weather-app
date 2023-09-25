@@ -1,4 +1,5 @@
 import {locationArr} from './script.js';
+import {getGeoLocation} from './script.js';
 
 const dialogButtons = document.querySelectorAll('button[data-dialog-target]');
 const dialogs = document.querySelectorAll('.dialog');

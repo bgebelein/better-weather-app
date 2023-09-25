@@ -148,7 +148,7 @@ items.forEach(function (item) {
 
 getGeoLocation();
 
-function getGeoLocation() {
+export function getGeoLocation() {
     if (!navigator.geolocation) {
         triggerToast('Error', 'Geolocation not supported', 'error');
         // Get weatherdata when locations were added
