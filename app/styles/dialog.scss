@@ -9,11 +9,6 @@
     top: 0;
     z-index: 1001;
     padding: .75rem;
-    transition: left .3s ease-in-out;
-
-    &.open{
-        left: 0 !important;
-    }
 
     h2{
         text-align: center;
@@ -25,14 +20,22 @@
         left: .75rem;
     }
 
-    &#settings-dialog{
+    &.move-in-from-right{
         left: 100%;
-        will-change: left;
     }
 
-    &#add-dialog{
+    &.move-in-from-left{
         left: -100%;
-        will-change: left;    
+    }
+
+    &.move-in-from-left,
+    &.move-in-from-right{
+        will-change: left;
+        transition: left .3s ease-in-out;
+
+        &.open{
+            left: 0 !important;
+        }
     }
 }
 
