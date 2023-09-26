@@ -281,7 +281,7 @@ footer {
         }
 
         .leaflet-layer.owm-layer{
-            filter: contrast(2) saturate(10) hue-rotate(-30deg) blur(8px);
+            filter: saturate(10) hue-rotate(-30deg);
             mix-blend-mode: plus-lighter;
         }
     }
