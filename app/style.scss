@@ -283,16 +283,6 @@ footer {
             filter: contrast(2) saturate(10) hue-rotate(-30deg) blur(8px);
             mix-blend-mode: plus-lighter;
         }
-
-        &::after{
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 999;
-        }
     }
 }
  
