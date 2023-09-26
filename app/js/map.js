@@ -29,6 +29,7 @@ export function setMap(Id, lat, lon, type) {
         scrollWheelZoom: false,
         dragging: false,
         boxZoom: false,
+        doubleClickZoom: false,
         interactive: false,
         layers: [esri, owm]
     });
