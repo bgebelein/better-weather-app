@@ -57,7 +57,7 @@ Custom weather app using the [OpenWeatherMap](https://openweathermap.org/) OneCa
   - Animated icons avaiable on the branch "animated icons" (wip)
     
 
-## How to use
+## User Guide
 
 1. Clone / Download repository
   
@@ -79,6 +79,12 @@ Custom weather app using the [OpenWeatherMap](https://openweathermap.org/) OneCa
   
 10. The app is now avaiable on your home screen 🎉
   
+
+## Developer Guide
+
+- Run `npm run watch` for development
+- Run `npm run build` for a production build
+  - The production build will be available under the `public` directory
 
 ## UI Design
 
