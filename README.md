@@ -85,6 +85,7 @@ Custom weather app using the [OpenWeatherMap](https://openweathermap.org/) OneCa
 - Run `npm run watch` for development
 - Run `npm run build` for a production build
   - The production build will be available under the `public` directory
+- Run `npx stylelint "**/*.scss" --fix` for style linting and auto fixes of SCSS files
 
 ## UI Design
 

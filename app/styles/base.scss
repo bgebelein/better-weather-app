@@ -10,10 +10,12 @@
     background-color: #05051A;
     background-attachment: fixed;
     background-size: contain;
-    --yellow: #FFCC00;
+
+    --yellow: #FC0;
     --red: #E7324C;
     --blue: #3CABF8;
     --wind-direction: 0;
+
     -ms-overflow-style: none;
     scrollbar-width: none;
     color: #fff;
@@ -26,7 +28,7 @@
 
 body {
     min-height: 100vh;
-    font-family: 'Urbanist', sans-serif;
+    font-family: Urbanist, sans-serif;
     font-weight: 500;
     color: #fff;
     position: relative;
@@ -48,7 +50,7 @@ button {
     line-height: 0;
 }
 
-*[draggable=true]{
+*[draggable="true"]{
     cursor: grab;
 
     &:active{
@@ -59,7 +61,7 @@ button {
 /* -------------------------- Typo -------------------------- */
 
 h2{
-    margin: 2.5rem 0 .75rem 0;
+    margin: 2.5rem 0 .75rem;
     display: block;
     width: 100%;
 }

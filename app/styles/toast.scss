@@ -1,5 +1,6 @@
 .toast{
     @extend .overlay;
+
     width: calc(min(640px, 100%) - 2.5rem);
     position: fixed;
     bottom: 1rem;
