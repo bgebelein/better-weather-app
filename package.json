@@ -8,6 +8,7 @@
     "create-copy": "cpy . '!style.scss' '!js/*.js' '../../public' --cwd=app",
     "minify-js": "uglifyjs public/bundle.js --compress drop_console=true --output public/bundle.js",
     "minify-html": "html-minifier --input-dir public --output-dir public --collapse-whitespace --remove-comments --sort-attributes --sort-class-name --file-ext html",
+    "lint-styles": "npm stylelint '**/*.scss'",
     "watch": "webpack --mode=development --watch",
     "build": "webpack && npm run create-copy && npm run minify-js && npm run minify-html"
   },
@@ -35,6 +36,8 @@
     "uglify-js": "^3.17.4"
   },
   "devDependencies": {
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   }

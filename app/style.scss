@@ -1,4 +1,4 @@
-$yellow: #FFCC00;
+$yellow: #FC0;
 $red: #E7324C;
 $blue: #3CABF8;
 
@@ -96,7 +96,7 @@ footer {
 
 .weather-alert{
     font-weight: 500;
-    margin: -3rem 0 1.5rem 0;
+    margin: -3rem 0 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,12 +165,7 @@ footer {
 
     .current-weather-data {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas:
-            "sun sun sun"
-            "wind-direction wind-speed pressure"
-            "humidity pop uvi";
+        grid-template: "sun sun sun" 1fr "wind-direction wind-speed pressure" 1fr "humidity pop uvi" 1fr / 1fr 1fr 1fr;
         grid-gap: .75rem;
         perspective: 2000px;
 
@@ -218,7 +213,7 @@ footer {
             position: relative;
             height: .25rem;
             border-radius: 1rem;
-            background-color: rgba(255, 255, 255, .2);
+            background-color: rgb(255 255 255 / 20%);
 
             .current-sunposition-progress,
             .current-moonposition-progress{
@@ -266,6 +261,7 @@ footer {
 
     .map{
         @extend .card;
+
         height: 240px;
         padding: 0;
         margin-top: .75rem;
@@ -297,7 +293,7 @@ footer {
         display: flex;
         gap: .75rem;
         overflow-x: scroll;
-        scroll-padding: 0 -.75re;
+        scroll-padding: 0 -.75rem;
         -ms-overflow-style: none;
         scrollbar-width: none;
         padding: 0 .75rem;
@@ -316,7 +312,7 @@ footer {
             }
     
             .hourly-temperature {
-                margin: 1rem 0 .5rem 0;
+                margin: 1rem 0 .5rem;
     
                 &::after {
                     content: '°';
@@ -391,7 +387,6 @@ footer {
             }
         
             ul {
-
                 li {
                     display: flex;
                     align-items: center;
