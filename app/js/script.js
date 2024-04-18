@@ -242,7 +242,7 @@ searchForm.addEventListener('submit', function (e) {
 let weatherLocationName;
 
 function getData(locationArr, counter = 0) {
-    fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + locationArr[counter].lat + '&lon=' + locationArr[counter].lon + '&appid=' + apiKey + '&units=metric&exclude=minutely')
+    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + locationArr[counter].lat + '&lon=' + locationArr[counter].lon + '&appid=' + apiKey + '&units=metric&exclude=minutely')
         .then((response) => response.json())
         .then((weatherData) => {
 
