@@ -371,7 +371,7 @@ function setWeatherData(weatherData) {
 
     // Wind Speed - in km/h and beaufort scale + description in tooltip
     const currentWindSpeed = weatherTemplateClone.content.querySelector('.current-wind-speed-value');
-    currentWindSpeed.innerText = `${Math.round(weatherData.current.wind_speed * 3.6)} | ${getWindForce(weatherData.current.wind_speed).beaufort}`;
+    currentWindSpeed.innerText = `${getWindForce(weatherData.current.wind_speed).beaufort} | ${Math.round(weatherData.current.wind_speed * 3.6)}`;
     currentWindSpeed.parentNode.setAttribute('onclick', `triggerToast("Windspeed", "${getWindForce(weatherData.current.wind_speed).description}")`);
 
     // Pressure
