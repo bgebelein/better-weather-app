@@ -369,10 +369,10 @@ function setWeatherData(weatherData) {
     currentWindDirection.innerText = setWindDirection(weatherData.current.wind_deg, false);
     currentWindDirection.parentNode.setAttribute('onclick', `triggerToast("Winddirection", "${setWindDirection(weatherData.current.wind_deg)} | ${weatherData.current.wind_deg}°")`);
 
-    // Wind Speed
+    // Wind Speed - in km/h and beaufort scale + description in tooltip
     const currentWindSpeed = weatherTemplateClone.content.querySelector('.current-wind-speed-value');
-    currentWindSpeed.innerText = Math.round(weatherData.current.wind_speed * 3.6);
-    currentWindSpeed.parentNode.setAttribute('onclick', `triggerToast("Windspeed", "${Math.round(weatherData.current.wind_speed * 3.6)} km/h | ${getWindForce(weatherData.current.wind_speed).beaufort} (${getWindForce(weatherData.current.wind_speed).description})")`);
+    currentWindSpeed.innerText = `${Math.round(weatherData.current.wind_speed * 3.6)} | ${getWindForce(weatherData.current.wind_speed).beaufort}`;
+    currentWindSpeed.parentNode.setAttribute('onclick', `triggerToast("Windspeed", "${getWindForce(weatherData.current.wind_speed).description}")`);
 
     // Pressure
     const currentPressure = weatherTemplateClone.content.querySelector('.current-pressure-value');
