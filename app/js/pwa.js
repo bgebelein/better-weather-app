@@ -1,6 +1,11 @@
 export function triggerPwaPopUp() {
+    // Get "mode" parameter from URL
+    let params = new URLSearchParams(document.location.search);
+    let mode = params.get("mode");
+    console.log("PWA mode:", mode);
+
     // Check if app is running in standalone mode
-    if (!navigator.standalone || !window.matchMedia('(display-mode: standalone)').matches) {
+    if (!navigator.standalone || !window.matchMedia('(display-mode: standalone)').matches || mode !== "standalone") {
 
         // User Agent is Android
         if (navigator.userAgent.match(/Android/i)) {
