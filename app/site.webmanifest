@@ -1,7 +1,7 @@
 {
     "name": "Better Weather App",
     "short_name": "Better Weather App",
-    "start_url": "/",
+    "start_url": "./?mode=standalone",
     "icons": [
         {
             "src": "images/favicon/android-chrome-192x192.png",
