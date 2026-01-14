@@ -13,7 +13,7 @@ import "../../node_modules/drag-drop-touch/DragDropTouch.js";
 
 export const apiKey = 'ce74a593068c612e5bc8451997f2fb81';
 
-/* -------------------- Get data from local storage  -------------------- */
+/* -------------------- Get locations from local storage  -------------------- */
 
 export let locationArr = [];
 
