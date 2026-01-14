@@ -1,32 +1,36 @@
 export function triggerPwaPopUp() {
+    // Check if app is running in standalone mode
+    if (!navigator.standalone || !window.matchMedia('(display-mode: standalone)').matches) {
 
-    // User Agent is Android
-    if (navigator.userAgent.match(/Android/i)) {
-        // Select template
-        const androidPopupTemplate = document.querySelector('#android-popup-template');
-        const androidPopup = androidPopupTemplate.cloneNode(true).content.querySelector('#android-pwa-popup');
+        // User Agent is Android
+        if (navigator.userAgent.match(/Android/i)) {
+            // Select template
+            const androidPopupTemplate = document.querySelector('#android-popup-template');
+            const androidPopup = androidPopupTemplate.cloneNode(true).content.querySelector('#android-pwa-popup');
 
-        // Add pop-up to body
-        document.querySelector('body').appendChild(androidPopup, true);
+            // Add pop-up to body
+            document.querySelector('body').appendChild(androidPopup, true);
 
-        // Remove pop-up after 6 sec
-        setTimeout(function () {
-            document.querySelector('#android-pwa-popup').remove();
-        }, 6000);
-    }
+            // Remove pop-up after 6 sec
+            setTimeout(function () {
+                document.querySelector('#android-pwa-popup').remove();
+            }, 6000);
+        }
 
-    // User Agent is iPhone, iPad or iPod
-    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-        // Select template
-        const iosPopupTemplate = document.querySelector('#ios-popup-template');
-        const iosPopup = iosPopupTemplate.cloneNode(true).content.querySelector('#ios-pwa-popup');
+        // User Agent is iPhone, iPad or iPod
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+            // Select template
+            const iosPopupTemplate = document.querySelector('#ios-popup-template');
+            const iosPopup = iosPopupTemplate.cloneNode(true).content.querySelector('#ios-pwa-popup');
 
-        // Add pop-up to body
-        document.querySelector('body').appendChild(iosPopup, true);
+            // Add pop-up to body
+            document.querySelector('body').appendChild(iosPopup, true);
 
-        // Remove pop-up after 6 sec
-        setTimeout(function () {
-            document.querySelector('#ios-pwa-popup').remove();
-        }, 6000);
+            // Remove pop-up after 6 sec
+            setTimeout(function () {
+                document.querySelector('#ios-pwa-popup').remove();
+            }, 6000);
+        }
+
     }
 }
