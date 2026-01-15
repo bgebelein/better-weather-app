@@ -34,10 +34,15 @@ function createLocationList() {
     for (let i = 0; i < locationArr.length; i++) {
         // create location items
         let locationSettingsItem = locationSettingsTemplate.cloneNode(true).content.querySelector('li');
+        // Set location name & country
         let locationName = locationSettingsItem.querySelector('.location-name');
-        locationName.innerText = `${locationArr[i].name} (${locationArr[i].country})`;
+        let locationCountry = locationSettingsItem.querySelector('.location-country');
+        locationName.innerText = `${locationArr[i].name}`;
+        locationCountry.innerText = `(${locationArr[i].country})`;
+        // Set data attributes
         locationSettingsItem.setAttribute('data-location-lat', locationArr[i].lat);
         locationSettingsItem.setAttribute('data-location-lon', locationArr[i].lon);
+        // Append to location list
         locationList.appendChild(locationSettingsItem);
 
         // Delete functionality/button
@@ -62,6 +67,7 @@ let dragSrcIndex;
 let dropSrcIndex;
 
 function handleDragStart(e) {
+    console.log('Drag started');
     this.style.opacity = '0.4';
 
     dragSrcEl = e.currentTarget;
@@ -94,6 +100,7 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
+    console.log('Item dropped');
     e.preventDefault();
     e.currentTarget.style.opacity = '1';
 
@@ -117,9 +124,7 @@ function handleDrop(e) {
 
     let locationItemCopy1 = locationArr[dragSrcIndex];
     let locationItemCopy2 = locationArr[dropSrcIndex];
-    console.log(dragSrcIndex);
-    console.log(dropSrcIndex);
-
+    console.log(`Moved item from ${dragSrcIndex} to ${dropSrcIndex} `);
 
     locationArr[dragSrcIndex] = locationItemCopy2;
     locationArr[dropSrcIndex] = locationItemCopy1;
