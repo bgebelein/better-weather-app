@@ -7,7 +7,7 @@ import {setMap} from "./map.js";
 import {triggerToast} from "./toast.js";
 window.triggerToast = triggerToast;
 import "./dialog.js";
-import "../../node_modules/drag-drop-touch/DragDropTouch.js";
+import Sortable, { Swap } from 'sortablejs';
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
 
@@ -35,10 +35,8 @@ function createLocationList() {
         // create location items
         let locationSettingsItem = locationSettingsTemplate.cloneNode(true).content.querySelector('li');
         // Set location name & country
-        let locationName = locationSettingsItem.querySelector('.location-name');
-        let locationCountry = locationSettingsItem.querySelector('.location-country');
-        locationName.innerText = `${locationArr[i].name}`;
-        locationCountry.innerText = `(${locationArr[i].country})`;
+        locationSettingsItem.querySelector('.location-name').innerText = `${locationArr[i].name}`;
+        locationSettingsItem.querySelector('.location-country').innerText = `(${locationArr[i].country})`;
         // Set data attributes
         locationSettingsItem.setAttribute('data-location-lat', locationArr[i].lat);
         locationSettingsItem.setAttribute('data-location-lon', locationArr[i].lon);
@@ -47,6 +45,7 @@ function createLocationList() {
 
         // Delete functionality/button
         locationSettingsItem.querySelector('button').addEventListener('click', function (e) {
+            console.log("Delete location:", locationArr[i]);
             // Remove from DOM
             e.currentTarget.parentNode.remove();
             // Remove from locationArr
@@ -59,94 +58,20 @@ createLocationList();
 
 /* -------------------- Drag and Drop Loaction Settings  -------------------- */
 
-let dragSrcEl = null;
-let dragSrcLat = 0;
-let dragSrcLon = 0;
+Sortable.mount(new Swap());
 
-let dragSrcIndex;
-let dropSrcIndex;
+let sortable = Sortable.create(document.querySelector('#location-list'), {
+    swap: true,
+    onUpdate: function (evt) {
+        console.log('Item moved from ' + evt.oldIndex + ' to ' + evt.newIndex);
+        console.log(locationArr);
 
-function handleDragStart(e) {
-    console.log('Drag started');
-    this.style.opacity = '0.4';
+        let locationItemCopy1 = locationArr[evt.oldIndex];
+        let locationItemCopy2 = locationArr[evt.newIndex];
 
-    dragSrcEl = e.currentTarget;
-    dragSrcLat = e.currentTarget.getAttribute('data-location-lat');
-    dragSrcLon = e.currentTarget.getAttribute('data-location-lon');
-
-    for (let i = 0; i < locationArr.length; i++) {
-        console.log(locationArr[i].lat, locationArr[i].lon);
-        if (locationArr[i].lat == dragSrcLat && locationArr[i].lon == dragSrcLon) {
-            dragSrcIndex = i;
-        }
-    }
-
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', dragSrcEl.innerHTML);
-}
-
-function handleDragOver(e) {
-    e.preventDefault();
-    e.currentTarget.style.opacity = '.4';
-}
-
-function handleDragEnter(e) {
-    e.preventDefault();
-    e.currentTarget.style.opacity = '.4';
-}
-
-function handleDragLeave(e) {
-    e.currentTarget.style.opacity = '1';
-}
-
-function handleDrop(e) {
-    console.log('Item dropped');
-    e.preventDefault();
-    e.currentTarget.style.opacity = '1';
-
-    for (let i = 0; i < locationArr.length; i++) {
-        if (locationArr[i].lat == this.getAttribute('data-location-lat') && locationArr[i].lon == this.getAttribute('data-location-lon')) {
-            dropSrcIndex = i;
-        }
-    }
-
-    if (dragSrcEl != this) {
-        dragSrcEl.innerHTML = this.innerHTML;
-        dragSrcEl.setAttribute('data-location-lat', this.getAttribute('data-location-lat'));
-        dragSrcEl.setAttribute('data-location-lon', this.getAttribute('data-location-lon'));
-
-        this.innerHTML = e.dataTransfer.getData('text/html');
-        this.setAttribute('data-location-lat', dragSrcLat);
-        this.setAttribute('data-location-lon', dragSrcLon);
-    }
-
-    console.log(locationArr);
-
-    let locationItemCopy1 = locationArr[dragSrcIndex];
-    let locationItemCopy2 = locationArr[dropSrcIndex];
-    console.log(`Moved item from ${dragSrcIndex} to ${dropSrcIndex} `);
-
-    locationArr[dragSrcIndex] = locationItemCopy2;
-    locationArr[dropSrcIndex] = locationItemCopy1;
-
-    console.log(locationArr);
-
-    return false;
-}
-
-function handleDragEnd(e) {
-    console.log('Drag end');
-    this.style.opacity = '1';
-}
-
-let items = document.querySelectorAll('#location-list li[draggable=true]');
-items.forEach(function (item) {
-    item.addEventListener('dragstart', handleDragStart, false);
-    item.addEventListener('dragenter', handleDragEnter, false);
-    item.addEventListener('dragover', handleDragOver, false);
-    item.addEventListener('dragleave', handleDragLeave, false);
-    item.addEventListener('drop', handleDrop, false);
-    item.addEventListener('dragend', handleDragEnd, false);
+        locationArr[evt.oldIndex] = locationItemCopy2;
+        locationArr[evt.newIndex] = locationItemCopy1;
+	},
 });
 
 /* -------------------- Add current location  -------------------- */
