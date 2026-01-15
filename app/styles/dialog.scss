@@ -115,9 +115,12 @@ ul#location-search-reults{
         font-size: 1.25rem;
         padding: 0 0 0 1rem;
 
-        &.drop-zone{
-            padding: 1rem;
-            border: 2px dotted rgba(#fff, .2);
+        &.sortable-ghost{
+            opacity: .2;
+        }
+
+        &.sortable-swap-highlight{
+            opacity: .6;
         }
     }
 }
