@@ -43,21 +43,24 @@ function createLocationList() {
         // Append to location list
         locationList.appendChild(locationSettingsItem);
 
-        // Delete functionality/button
+        // Delete location
         locationSettingsItem.querySelector('button').addEventListener('click', function (e) {
             console.log("Delete location:", locationArr[i]);
-            // Remove from DOM
-            e.currentTarget.parentNode.remove();
             // Remove from locationArr
-            locationArr.splice(locationArr.indexOf(locationArr[i]));
+            locationArr.splice(locationArr.indexOf(locationArr[i]), 1);
+            // Recreate location list
+            createLocationList();
+            // Show toast
+            triggerToast('Info', 'Location removed.', 'info');
         });
     }
 }
 
 createLocationList();
 
-/* -------------------- Drag and Drop Loaction Settings  -------------------- */
+/* -------------------- Sort Locations  -------------------- */
 
+// Enable swap plugin
 Sortable.mount(new Swap());
 
 let sortable = Sortable.create(document.querySelector('#location-list'), {
@@ -66,11 +69,16 @@ let sortable = Sortable.create(document.querySelector('#location-list'), {
         console.log('Item moved from ' + evt.oldIndex + ' to ' + evt.newIndex);
         console.log(locationArr);
 
+        // Create copies of the moved items
         let locationItemCopy1 = locationArr[evt.oldIndex];
         let locationItemCopy2 = locationArr[evt.newIndex];
 
+        // Swap items in locationArr
         locationArr[evt.oldIndex] = locationItemCopy2;
         locationArr[evt.newIndex] = locationItemCopy1;
+
+        // Recreate location list to reflect changes
+        createLocationList();
 	},
 });
 
