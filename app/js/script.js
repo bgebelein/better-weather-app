@@ -7,7 +7,7 @@ import {setMap} from "./map.js";
 import {triggerToast} from "./toast.js";
 window.triggerToast = triggerToast;
 import "./dialog.js";
-import Sortable, { Swap } from 'sortablejs';
+import Sortable from 'sortablejs';
 
 /* -------------------- OpenWeatherMap APi Key  -------------------- */
 
@@ -60,22 +60,13 @@ createLocationList();
 
 /* -------------------- Sort Locations  -------------------- */
 
-// Enable swap plugin
-Sortable.mount(new Swap());
-
 let sortable = Sortable.create(document.querySelector('#location-list'), {
-    swap: true,
     onUpdate: function (evt) {
-        console.log('Item moved from ' + evt.oldIndex + ' to ' + evt.newIndex);
-        console.log(locationArr);
+        // Delete location from locationArray
+        let movedLocation = locationArr.splice(evt.oldIndex, 1)[0];
 
-        // Create copies of the moved items
-        let locationItemCopy1 = locationArr[evt.oldIndex];
-        let locationItemCopy2 = locationArr[evt.newIndex];
-
-        // Swap items in locationArr
-        locationArr[evt.oldIndex] = locationItemCopy2;
-        locationArr[evt.newIndex] = locationItemCopy1;
+        // Add location to new position in locationArray
+        locationArr.splice(evt.newIndex, 0, movedLocation);
 
         // Recreate location list to reflect changes
         createLocationList();
