@@ -14,6 +14,9 @@ header{
     padding: 0 .75rem;
     margin-top: env(safe-area-inset-top, 0);
     min-height: 5rem;
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
 
     button{
         position: relative;
