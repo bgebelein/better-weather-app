@@ -183,7 +183,7 @@ function getData(locationArr, counter = 0) {
                 // Set location name for headline
                 weatherLocationName = locationArr[counter].name;
 
-                console.log(weatherLocationName);
+                console.log(`Location: ${weatherLocationName}`);
                 console.log(weatherData);
 
                 // Set data in the app
