@@ -11,18 +11,20 @@
     top: 0;
     z-index: 1001;
 
+    header {
+        max-width: 640px;
+        margin-inline: auto;
+    }
+
     .dialog-body{
         padding: .75rem;
+        max-width: 640px;
+        margin-inline: auto;
     }
 
     h2{
         text-align: center;
         margin-top: 1rem;
-    }
-
-    .close-dialog{
-        position: absolute;
-        left: .75rem;
     }
 
     &.move-in-from-right{
