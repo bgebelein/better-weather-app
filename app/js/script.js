@@ -161,7 +161,8 @@ searchForm.addEventListener('submit', function (e) {
 
                         // Add location
                         locationSearchItemClone.addEventListener('click', function () {
-                            if (!locationArr.includes(locationData[i])) {
+                            if (!locationArr.some(location => location.lat === locationData[i].lat && location.lon === locationData[i].lon)) {
+                                console.log('Add location:', locationData[i]);
                                 locationArr.push(locationData[i]);
                                 createLocationList();
                                 triggerToast('Info', 'Location added.', 'info');
