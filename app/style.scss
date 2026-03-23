@@ -169,7 +169,7 @@ footer {
     .current-weather-data {
         display: grid;
         grid-template: "sun sun sun" 1fr "wind-direction wind-speed pressure" 1fr "humidity pop uvi" 1fr / 1fr 1fr 1fr;
-        grid-gap: .75rem;
+        gap: .75rem;
         perspective: 2000px;
 
         div:not(.sun-moon) {
@@ -207,7 +207,7 @@ footer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        grid-gap: .75rem;
+        gap: .75rem;
         padding: 1rem 0;
         backface-visibility: hidden;
 
